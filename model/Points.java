@@ -1,7 +1,6 @@
 package model;
 
-public class Points extends Achievement{
-
+public class Points extends Achievement {
     private int points;
 
     public Points(String name, int points) {
@@ -14,9 +13,10 @@ public class Points extends Achievement{
     }
 
     @Override
-    public void addAchievement(Achievement other) {
-        if (other instanceof Points && other.getName().equals(this.getName())) {
-            this.points += ((Points) other).getPoints();
+    public void addAchievement(Achievement achievement) {
+        if (achievement instanceof Points) {
+            Points pointsAchievement = (Points) achievement;
+            this.points += pointsAchievement.getPoints();
         }
     }
 }

@@ -1,20 +1,18 @@
-package factory;
+package storage;
 
 import interfaces.AchievementStorage;
-import storage.MemoryAchievementStorage;
 
 public class AchievementStorageFactory {
-    private static AchievementStorage achievementStorage;
-
-    public static AchievementStorage getAchievementStorage() {
-        if (achievementStorage == null) {
-            achievementStorage = new MemoryAchievementStorage();
-        }
-        return achievementStorage;
-    }
+    private static AchievementStorage instance;
 
     public static void setAchievementStorage(AchievementStorage storage) {
-        achievementStorage = storage;
+        instance = storage;
+    }
+
+    public static AchievementStorage getAchievementStorage() {
+        if (instance == null) {
+            throw new IllegalStateException("AchievementStorage not initialized");
+        }
+        return instance;
     }
 }
-
